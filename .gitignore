@@ -1,0 +1,33 @@
+# Dependencies
+node_modules
+pnpm-lock.yaml
+yarn.lock
+package-lock.json
+
+# Build outputs
+dist
+build
+*.tsbuildinfo
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# IDE
+.vscode
+.idea
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Generated mocks (should regenerate)
+examples/msw-service/src/mocks/generated/
+
+# Vue dev server
+examples/vue-app/.vite
+
+# Testing
+coverage
+.nyc_output
