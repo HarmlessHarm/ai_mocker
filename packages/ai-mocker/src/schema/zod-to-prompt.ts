@@ -1,4 +1,5 @@
 import { z } from 'zod';
+import { zodToJsonSchema } from 'zod-to-json-schema';
 
 /**
  * Convert a Zod schema to a prompt for LLM mock data generation
@@ -7,8 +8,8 @@ export function zodSchemaToPrompt(
   schema: z.ZodType,
   context?: string
 ): string {
-  // Use Zod v4's native toJSONSchema support
-  const jsonSchema = z.toJSONSchema(schema);
+  // Convert Zod schema to JSON Schema
+  const jsonSchema = zodToJsonSchema(schema as any);
 
   const schemaString = JSON.stringify(jsonSchema, null, 2);
 
