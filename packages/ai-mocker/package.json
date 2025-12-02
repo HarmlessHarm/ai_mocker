@@ -1,0 +1,44 @@
+{
+  "name": "ai-mocker",
+  "version": "0.1.0",
+  "description": "Generate mock data from Zod schemas using LLM APIs",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "test": "vitest"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.32.0",
+    "@google/generative-ai": "^0.21.0",
+    "zod": "^3.24.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.6.0",
+    "tsup": "^8.3.0",
+    "vitest": "^2.1.0"
+  },
+  "peerDependencies": {
+    "zod": "^3.24.0"
+  },
+  "keywords": [
+    "mock",
+    "test",
+    "data",
+    "zod",
+    "llm",
+    "ai",
+    "msw"
+  ]
+}
