@@ -1,4 +1,4 @@
-import type { ProviderConfig, AIMockerConfig } from './types';
+import type { ProviderConfig, AIMockerConfig, ClaudeModel, GeminiModel } from './types';
 
 /**
  * Merge user config with environment variables
@@ -22,23 +22,26 @@ export function resolveProviderConfig(config: ProviderConfig): ProviderConfig {
     );
   }
 
-  // Determine default model
-  let resolvedModel = model;
-  if (!resolvedModel) {
-    if (name === 'anthropic') {
-      resolvedModel = 'claude-3-5-sonnet-20241022';
-    } else if (name === 'gemini') {
-      resolvedModel = 'gemini-1.5-pro';
-    }
+  // Determine default model with proper typing
+  if (name === 'anthropic') {
+    const resolvedModel: ClaudeModel = model ?? 'claude-3-5-sonnet-20241022';
+    return {
+      name,
+      apiKey: resolvedApiKey,
+      model: resolvedModel,
+      temperature: temperature ?? 0.7,
+      maxTokens: maxTokens ?? 4096,
+    };
+  } else {
+    const resolvedModel: GeminiModel = model ?? 'gemini-1.5-pro';
+    return {
+      name,
+      apiKey: resolvedApiKey,
+      model: resolvedModel,
+      temperature: temperature ?? 0.7,
+      maxTokens: maxTokens ?? 4096,
+    };
   }
-
-  return {
-    name,
-    apiKey: resolvedApiKey,
-    model: resolvedModel,
-    temperature: temperature ?? 0.7,
-    maxTokens: maxTokens ?? 4096,
-  };
 }
 
 /**

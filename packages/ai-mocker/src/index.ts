@@ -13,6 +13,8 @@ export type {
   GenerationResult,
   LLMProvider,
   StorageProvider,
+  ClaudeModel,
+  GeminiModel,
 } from './types';
 
 // Providers

@@ -1,15 +1,43 @@
 import type { z } from 'zod';
 
 /**
- * LLM Provider configuration
+ * Available Claude models
  */
-export interface ProviderConfig {
-  name: 'anthropic' | 'gemini';
-  apiKey?: string;
-  model?: string;
-  temperature?: number;
-  maxTokens?: number;
-}
+export type ClaudeModel =
+  | 'claude-3-5-sonnet-20241022'
+  | 'claude-3-5-sonnet-20240620'
+  | 'claude-3-opus-20240229'
+  | 'claude-3-sonnet-20240229'
+  | 'claude-3-haiku-20240307';
+
+/**
+ * Available Gemini models
+ */
+export type GeminiModel =
+  | 'gemini-1.5-pro'
+  | 'gemini-1.5-pro-002'
+  | 'gemini-1.5-flash'
+  | 'gemini-1.5-flash-002'
+  | 'gemini-1.0-pro';
+
+/**
+ * LLM Provider configuration with typed models
+ */
+export type ProviderConfig =
+  | {
+      name: 'anthropic';
+      apiKey?: string;
+      model?: ClaudeModel;
+      temperature?: number;
+      maxTokens?: number;
+    }
+  | {
+      name: 'gemini';
+      apiKey?: string;
+      model?: GeminiModel;
+      temperature?: number;
+      maxTokens?: number;
+    };
 
 /**
  * Main AIMocker configuration

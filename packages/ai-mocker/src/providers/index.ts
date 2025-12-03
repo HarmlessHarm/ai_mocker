@@ -12,7 +12,9 @@ export function createProvider(config: ProviderConfig): LLMProvider {
     case 'gemini':
       return new GeminiProvider(config);
     default:
-      throw new Error(`Unknown provider: ${config.name}`);
+      // This should never happen due to TypeScript's discriminated union
+      const exhaustiveCheck: never = config;
+      throw new Error(`Unknown provider: ${exhaustiveCheck}`);
   }
 }
 
